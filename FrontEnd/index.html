@@ -126,7 +126,10 @@
             document.
           </p>
           <form id="verification-form">
-            <div id="qr-reader" style="width: 100%; max-width: 320px; margin: 1rem auto;"></div>
+            <div
+              id="qr-reader"
+              style="width: 100%; max-width: 320px; margin: 1rem auto"
+            ></div>
             <label for="certificate-number"> Certificate Number </label>
             <div class="input-clear">
               <input
@@ -152,7 +155,7 @@
               id="start-scan-btn"
               type="button"
             >
-              ▦   Scan QR Code
+              ▦ Scan QR Code
             </button>
           </form>
           <small class="muted"> Example: CT-34.12.010.12345 </small>
@@ -259,16 +262,22 @@
               src="assets/land-parcels.jpg"
             />
             <dl>
+              <dt>Certificate Owner</dt>
+              <dd id="result-owner">—</dd>
               <dt>Certificate Number</dt>
-              <dd id="result-number">CT-34.12.010.12345</dd>
+              <dd id="result-number">CT-20261119-8A31F09C</dd>
               <dt>Land Title Type</dt>
-              <dd>Freehold Title (SHM)</dd>
+              <dd id="result-land-type">—</dd>
               <dt>Area</dt>
-              <dd>1.250 m²</dd>
+              <dd id="result-area">—</dd>
               <dt>Location</dt>
-              <dd>Sleman, D.I. Yogyakarta</dd>
+              <dd id="result-location">—</dd>
+              <dt>Coordinates</dt>
+              <dd id="result-coordinates">—</dd>
+              <dt>Verified At</dt>
+              <dd id="result-verified-at">—</dd>
               <dt>Status</dt>
-              <dd class="success-text">Sample data</dd>
+              <dd id="result-record-status" class="success-text">—</dd>
               <dt>Issue Date</dt>
               <dd>January 12, 2020</dd>
               <dt>Last Updated</dt>
@@ -362,6 +371,193 @@
           </button>
         </div>
       </section>
+
+      <section
+        class="app-view account-flow-page"
+        data-view="login"
+        id="login-page"
+      >
+        <div class="account-page-wrap">
+          <button class="back-link" data-go="home" type="button">
+            ← Back to Home
+          </button>
+          <div class="login-layout">
+            <div class="login-brand-panel">
+              <p class="eyebrow">WELCOME TO LANCERT</p>
+              <h1>Your land.<br />Your records.<br />Your peace of mind.</h1>
+              <p>
+                Access your land information and keep your certificate details
+                close at hand.
+              </p>
+              <div class="login-assurance">
+                <span class="secure-check">✓</span
+                ><span
+                  ><b>Private by design</b
+                  ><small
+                    >Connect a real authentication service before
+                    production.</small
+                  ></span
+                >
+              </div>
+            </div>
+            <form class="panel login-form" id="login-form">
+              <p class="eyebrow">ACCOUNT ACCESS</p>
+              <h2>Sign in to LANCERT</h2>
+              <p class="muted">Demo sign-in for the frontend preview.</p>
+              <label for="login-username">Username</label>
+              <input
+                id="login-username"
+                type="text"
+                placeholder="Your username"
+                autocomplete="username"
+                minlength="3"
+                required
+              />
+              <label for="login-email">Email address</label
+              ><input
+                id="login-email"
+                type="email"
+                placeholder="you@example.com"
+                autocomplete="email"
+                required
+              />
+              <label for="login-password">Password</label
+              ><input
+                id="login-password"
+                type="password"
+                placeholder="Enter a password"
+                minlength="4"
+                required
+              />
+              <p class="login-demo-note">
+                This form is not real authentication. Only prototype demo data is used.
+              </p>
+              <button class="btn btn-primary full-width" type="submit">
+                Continue to Account <span>→</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+      <section
+        class="app-view account-flow-page"
+        data-view="account"
+        id="account-page"
+      >
+        <div class="account-page-wrap">
+          <div class="account-heading">
+            <div>
+              <p class="eyebrow">PERSONAL LAND ACCOUNT</p>
+              <h1>My Land Account</h1>
+              <p class="muted">
+                Certificate information is loaded from the LANCERT API.
+              </p>
+            </div>
+            <button class="btn btn-outline" id="sign-out-button" type="button">
+              Sign Out
+            </button>
+          </div>
+          <div class="account-welcome panel">
+            <div class="account-avatar">L</div>
+            <div>
+              <small class="muted">SIGNED IN AS</small>
+              <h2 id="account-username">Demo User</h2>
+              <p class="muted" id="account-email">demo@example.com</p>
+            </div>
+            <span class="demo-tag">DEMO SESSION</span>
+          </div>
+          <div class="account-grid">
+            <article class="panel land-record-card">
+              <div class="account-card-heading">
+                <div>
+                  <p class="eyebrow">REGISTERED PROPERTY</p>
+                  <h2>Your Land Record</h2>
+                </div>
+                <span class="record-status" id="account-record-status"
+                  >Loading record</span
+                >
+              </div>
+              <div class="land-record-body">
+                <img
+                  src="assets/land-parcels.jpg"
+                  alt="Illustrative aerial view of land parcels"
+                />
+                <div class="land-record-details">
+                  <span class="muted">Certificate Owner</span
+                  ><strong id="account-owner-name">Loading...</strong>
+                  <span class="muted">Certificate Number</span
+                  ><strong id="account-cert-number">CT-20261119-8A31F09C</strong>
+                  <span class="muted">Land Title</span
+                  ><strong id="account-land-type">Loading...</strong>
+                  <span class="muted">Land Area</span
+                  ><strong id="account-land-area">Loading...</strong>
+                  <span class="muted">Location</span
+                  ><strong id="account-land-location">Loading...</strong>
+                  <span class="muted">Coordinates</span
+                  ><strong id="account-land-coordinates">Loading...</strong>
+                  <span class="muted">Verified At</span
+                  ><strong id="account-verified-at">Loading...</strong>
+                  <span class="muted">Record Status</span
+                  ><strong class="status-green" id="account-land-status"
+                    >Loading...</strong
+                  >
+                </div>
+              </div>
+              <div class="account-warning">
+                <b>Backend-connected demo</b>
+                <p>
+                  Record details are retrieved from MySQL through the Node API.
+                  Add user ownership checks before using real personal records.
+                </p>
+              </div>
+            </article>
+            <article class="panel account-qr-card">
+              <p class="eyebrow">QUICK ACCESS</p>
+              <h2>Land Certificate QR</h2>
+              <p class="muted">
+                Generated by Python after the backend confirms this certificate
+                exists in MySQL.
+              </p>
+
+              <div class="qr-frame">
+                <img
+                  id="account-qr-image"
+                  alt="Generated LANCERT certificate QR code"
+                  hidden
+                />
+              </div>
+
+              <strong class="qr-certificate-number" id="account-qr-number"
+                >CT-34.12.010.12345</strong
+              ><small class="muted" id="account-qr-caption"
+                >QR image will be generated from the backend.</small
+              >
+              <button
+                class="btn btn-primary full-width"
+                id="generate-account-qr"
+                type="button"
+              >
+                Generate QR Code
+              </button>
+              <button
+                class="btn btn-outline full-width"
+                id="download-account-qr"
+                type="button"
+                disabled
+              >
+                Download QR Code
+              </button>
+            </article>
+          </div>
+          <div class="account-actions">
+            <button class="btn btn-primary" data-go="enter" type="button">
+              Verify Another Certificate <span>→</span></button
+            ><button class="btn btn-outline" data-go="map" type="button">
+              Explore Map
+            </button>
+          </div>
+        </div>
+      </section>
       <section class="app-view section-page" data-view="map" id="map-page">
         <article class="standalone-panel panel map-panel" id="map">
           <div class="section-title">
@@ -385,11 +581,7 @@
             </button>
           </div>
           <div class="map-canvas">
-            <img
-              alt="land"
-              id="map-image"
-              src="assets/land-int.jpg"
-            />
+            <img alt="land" id="map-image" src="assets/land-int.jpg" />
             <div class="map-polygon"></div>
             <div class="map-area-label">1.250 m²</div>
             <div class="map-zoom">
@@ -620,7 +812,10 @@
       </p>
       <button class="btn btn-primary" id="dialog-ok">Got it</button>
     </dialog>
-    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+    <script
+      src="https://unpkg.com/html5-qrcode"
+      type="text/javascript"
+    ></script>
     <script src="js/app.js"></script>
   </body>
 </html>
